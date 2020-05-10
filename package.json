@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "name": "cordova-plugin-fcm-image-support",
+  "cordova_name": "FCM Image Support for Cordova iOS",
+  "description": "Zero configuration iOS support for image in the FCM notification payload",
+  "license": "MIT",
+  "repo": "https://github.com/andrehtissot/cordova-plugin-fcm-image-support",
+  "issue": "https://github.com/andrehtissot/cordova-plugin-fcm-image-support/issues",
+  "author": "André Augusto Tissot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrehtissot/ccordova-plugin-fcm-image-support"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "notification",
+    "push",
+    "firebase",
+    "fcm",
+    "ios",
+    "image",
+    "cordova"
+  ],
+  "platforms": [
+    "android",
+    "ios"
+  ]
+}

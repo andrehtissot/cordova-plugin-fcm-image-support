@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-fcm-image-support" version="0.1.0">
+	<name>FCM Image Support for Cordova iOS</name>
+	<description>Zero configuration iOS support for image in the FCM notification payload</description>
+	<license>MIT</license>
+	<keywords>notification, push, firebase, fcm, ios, image, cordova, plugin</keywords>
+
+	<engines>
+		<engine name="cordova-ios" version=">=5.1.1" />
+	</engines>
+
+	<!-- IOS CONFIGURATION -->
+	<platform name="ios">
+		<!-- FIREBASE COCOAPODS-->
+		<podspec>
+			<config>
+                <source url="https://github.com/CocoaPods/Specs.git"/>
+			</config>
+			<pods>
+				<pod name="Firebase/Analytics"/>
+				<pod name="Firebase/Messaging"/>
+			</pods>
+		</podspec>
+	</platform>
+
+	<!-- PATCH PREPARE.JS TO ALLOW APP EXTENSIONS -->
+	<hook src="scripts/patch_cordovas_prepare.js" type="after_prepare" />
+	<hook src="scripts/patch_cordovas_prepare.js" type="after_plugin_add" />
+
+	<!-- COPY SOURCE FILES WHICH WOULD BE PART OF THE MAIN APP -->
+	<hook src="scripts/copy_app_extension_files.js" type="after_prepare" />
+	<hook src="scripts/copy_app_extension_files.js" type="after_plugin_add" />
+
+	<!-- CONFIGURE THE APP EXTENSION -->
+	<hook src="scripts/configure_main_project_pbxproj.js" type="after_prepare" />
+	<hook src="scripts/configure_main_project_pbxproj.js" type="after_plugin_add" />
+</plugin>
