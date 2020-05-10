@@ -1,3 +1,5 @@
+"use strict";
+
 function getCointainerItemProxy() {
   var text = `
 		3E7143F724607362001886A3 /* PBXContainerItemProxy */ = {

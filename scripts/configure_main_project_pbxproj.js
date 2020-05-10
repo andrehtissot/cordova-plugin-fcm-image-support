@@ -3,34 +3,12 @@
 
 var fs = require("fs");
 var CONFIGURATION_DATA = require("./configure_main_project_pbxproj.data").DATA;
+var getFilePath = require("./main_project_pbxproj.helpers").getFilePath;
+var extractValueFromProjectFile = require("./main_project_pbxproj.helpers")
+  .extractValueFromProjectFile;
 var helpers = require("./helpers");
 
 var IOS_DIR = "platforms/ios";
-var PROJECT_FILE_NAME = "project.pbxproj";
-var MAIN_DIRECTORY_FILTER_SUFFIX = ".xcodeproj";
-
-function getFilePath() {
-  var iosChidrenDirectories;
-  try {
-    iosChidrenDirectories = fs.readdirSync(IOS_DIR) || [];
-  } catch (e) {
-    throw new Error(`${IOS_DIR} was not listable!`);
-  }
-  var possibleDirectories = iosChidrenDirectories.filter((dirName) =>
-    dirName.endsWith(MAIN_DIRECTORY_FILTER_SUFFIX)
-  );
-  if (possibleDirectories.length === 0) {
-    throw new Error(`${IOS_DIR} didn't contain the main project's directory!`);
-  }
-  if (possibleDirectories.length !== 1) {
-    throw new Error(`${IOS_DIR} contains more than one ${MAIN_DIRECTORY_FILTER_SUFFIX} directory!`);
-  }
-  var filePath = `${IOS_DIR}/${possibleDirectories[0]}/${PROJECT_FILE_NAME}`;
-  if (helpers.fileExists(filePath)) {
-    return filePath;
-  }
-  throw new Error(`${filePath} not found!`);
-}
 
 function getMaxIndex(text, within) {
   var maxIndex = text.length - 1;

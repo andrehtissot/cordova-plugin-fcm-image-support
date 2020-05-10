@@ -5,8 +5,8 @@ var fs = require("fs");
 var helpers = require("./helpers");
 
 var REPLACE = [
-  ["origPkg !== pkg", "!origPkg.startsWith(pkg)"],
-  ["origPkg === pkg", "origPkg.startsWith(pkg)"]
+  ["!origPkg.startsWith(pkg)", "origPkg !== pkg"],
+  ["origPkg.startsWith(pkg)", "origPkg === pkg"]
 ];
 var FILES = [
   "platforms/ios/cordova/lib/prepare.js",

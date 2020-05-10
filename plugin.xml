@@ -27,11 +27,20 @@
 	<hook src="scripts/patch_cordovas_prepare.js" type="after_prepare" />
 	<hook src="scripts/patch_cordovas_prepare.js" type="after_plugin_add" />
 
-	<!-- COPY SOURCE FILES WHICH WOULD BE PART OF THE MAIN APP -->
+	<!-- UNPATCH TO RESTORE DEFAULT BEHAVIOR -->
+	<hook src="scripts/unpatch_cordovas_prepare.js" type="before_plugin_uninstall" />
+
+	<!-- COPY SOURCE FILES WHICH WOULD BE FOR THE APP EXTENSION -->
 	<hook src="scripts/copy_app_extension_files.js" type="after_prepare" />
 	<hook src="scripts/copy_app_extension_files.js" type="after_plugin_add" />
+
+	<!-- DELETE SOURCE FILES WHICH WERE FOR THE APP EXTENSION -->
+	<hook src="scripts/delete_app_extension_files.js" type="before_plugin_uninstall" />
 
 	<!-- CONFIGURE THE APP EXTENSION -->
 	<hook src="scripts/configure_main_project_pbxproj.js" type="after_prepare" />
 	<hook src="scripts/configure_main_project_pbxproj.js" type="after_plugin_add" />
+
+	<!-- CLEAN APP EXTENSION CONFIGURATION -->
+	<hook src="scripts/clean_main_project_pbxproj.js" type="before_plugin_uninstall" />
 </plugin>

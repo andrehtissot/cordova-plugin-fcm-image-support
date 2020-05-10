@@ -26,14 +26,37 @@ exports.directoryExists = function (path) {
   }
 };
 
-exports.logError = function (message, obj) {
+function logAs(message, obj, color) {
   if (typeof message === "object") {
-    console.error("\x1b[1m\x1b[31m%O\x1b[0m", message);
+    console.error("\x1b[1m\x1b[" + color + "m%O\x1b[0m", message);
     return;
   }
   if (obj) {
-    console.error("\x1b[1m\x1b[31m%s\n%O\x1b[0m", message, obj);
+    console.error("\x1b[1m\x1b[" + color + "m%s\n%O\x1b[0m", message, obj);
   } else {
-    console.error("\x1b[1m\x1b[31m%s\x1b[0m", message);
+    console.error("\x1b[1m\x1b[" + color + "m%s\x1b[0m", message);
   }
+}
+
+exports.logError = function (message, obj) {
+  logAs(message, obj, "31");
+};
+
+exports.logWarning = function (message, obj) {
+  logAs(message, obj, "33");
+};
+
+exports.replaceContentInFile = function (filePath, fromToArray) {
+  var currentContent = "" + fs.readFileSync(filePath);
+  var newContent = currentContent;
+  for (var r = fromToArray.length - 1; r > -1; r--) {
+    if (!newContent.includes(fromToArray[r][0]) && !newContent.includes(fromToArray[r][1])) {
+      throw new Error(`Unable to patch ${filePath}`);
+    }
+    newContent = newContent.replace(fromToArray[r][0], fromToArray[r][1]);
+  }
+  if (newContent === currentContent) {
+    return;
+  }
+  fs.writeFileSync(filePath, currentContent);
 };
