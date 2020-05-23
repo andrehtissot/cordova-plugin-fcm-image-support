@@ -58,5 +58,5 @@ exports.replaceContentInFile = function (filePath, fromToArray) {
   if (newContent === currentContent) {
     return;
   }
-  fs.writeFileSync(filePath, currentContent);
+  fs.writeFileSync(filePath, newContent);
 };

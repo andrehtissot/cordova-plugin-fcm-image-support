@@ -20,11 +20,11 @@ function main() {
   var appConfig;
   try {
     var filePath = getFilePath();
-    var fileText = fs.readFileSync(filePath).toString();
+    var fileText = "" + fs.readFileSync(filePath);
     var originalFileText = fileText;
     appConfig = getApplicationConfiguration(fileText);
     for (var i = CONFIGURATION_DATA.length - 1; i > -1; i--) {
-      fileText = fileText.replace(CONFIGURATION_DATA[i](appConfig), "");
+      fileText = fileText.replace(CONFIGURATION_DATA[i](appConfig).text, "");
     }
     if (originalFileText !== fileText) {
       fs.writeFileSync(filePath, fileText);

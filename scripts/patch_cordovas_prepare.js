@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 "use strict";
 
-var fs = require("fs");
 var helpers = require("./helpers");
 
 var REPLACE = [
@@ -18,6 +17,8 @@ function main() {
     for (var f = FILES.length - 1; f > -1; f--) {
       if (helpers.fileExists(FILES[f])) {
         helpers.replaceContentInFile(FILES[f], REPLACE);
+      } else {
+        helpers.logWarning(`File ${FILES[f]} not found when patching`);
       }
     }
   } catch (e) {
