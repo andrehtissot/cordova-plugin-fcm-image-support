@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "1.0.0",
   "name": "cordova-plugin-fcm-image-support",
   "cordova_name": "FCM Image Support for Cordova iOS",
   "description": "Zero configuration iOS support for image in the FCM notification payload",

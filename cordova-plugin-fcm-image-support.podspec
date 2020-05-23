@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "cordova-plugin-fcm-image-support"
-  spec.version      = "0.1.0"
+  spec.version      = "1.0.0"
   spec.summary      = "FCM Image Support for Cordova iOS"
 
   # This description is used to generate tags and improve search results.
